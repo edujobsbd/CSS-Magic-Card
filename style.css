@@ -1,0 +1,75 @@
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+:root {
+  --card-heigh: 70vh;
+  --card-width: 30vw;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #212534;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.card {
+  background-color: #191c29;
+  height: var(--card-heigh);
+  width: var(--card-width);
+  padding: 5px;
+  position: relative;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: rgb(88, 199, 250 / 100%);
+  cursor: pointer;
+  color: antiquewhite;
+}
+
+.card:hover {
+  color: rgb(206, 215, 219);
+  transition: 1s;
+}
+
+.card::before {
+  content: "";
+  height: 104%;
+  width: 104%;
+  position: absolute;
+  border-radius: 5px;
+  background-image: linear-gradient(var(--rotate), red, green, blue, yellow);
+  top: -2%;
+  left: -2%;
+  z-index: -1;
+  animation: spin 2.5s linear infinite;
+}
+.card::after {
+  content: "";
+  height: 104%;
+  width: 104%;
+  position: absolute;
+  border-radius: 5px;
+  background-image: linear-gradient(var(--rotate), red, green, blue, yellow);
+  filter: blur(calc(var9(--card-heigh) / 5));
+  z-index: -1;
+  top: -2%;
+  left: -2%;
+  animation: spin 2.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
